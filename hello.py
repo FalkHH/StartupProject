@@ -12,16 +12,18 @@ temp = sense.get_temperature()
 print("Temperatur: %s C" % temp)
 temp = sense.get_temperature_from_humidity()
 #sense.show_message("Temperatur-Feuchtigkeit: %s C" % temp)
-print("Temperatur-Feuchtigkeit: %2.2f C" % temp)
+print("Temperatur-Feuchtigkeit: %2.2f C" % temp)    # %2.2f Wert als Floatingpoint mit 2 vor und 2 nach dem Komma
 temp = sense.get_temperature_from_pressure()
 #sense.show_message("Temperatur-Druck: %s C" % temp)
 print("Temperatur-Druck: %s C" % temp)
 pressure = sense.get_pressure()
 #sense.show_message("Druck: %s Millibars" % pressure)
 print("Druck: %s Millibars" % pressure)
-
-for i in range(1,10):
-    sense.show_message ( "%s" % i )
+sense.set_imu_config(True, False, False)  # nur Kompass an / nicht Neigungssensor und nicht Beschleunigungsssensor
+for i in range(1,10):  #for i=1 i<10 i++
+    sense.show_message ( "%s" % i )    # %s Wert als String ausgeben
+	north = sense.get_compass()
+    print("North: %s" % north)
     time.sleep(1)
 sense.clear()	
 print("Temperatur: %s C" % temp)
