@@ -26,4 +26,11 @@ for i in range(1,10):  #for i=1 i<10 i++
     print("North: %s" % north)
     time.sleep(1)
 sense.clear()	
-print("Temperatur: %s C" % temp)
+sense.set_imu_config(False, True, False)  # nur Neigungssensor an / nicht Kompass und nicht Beschleunigungsssensor
+for i in range(1,10):  #for i=1 i<10 i++
+    sense.show_message ( "%s" % i )    # %s Wert als String ausgeben
+    orientation = sense.get_orientation_degrees()
+    print("p: {pitch}, r: {roll}, y: {yaw}".format(**orientation))
+    time.sleep(1)
+sense.clear()	
+print("Temperatur-Druck: %s C" % temp)
