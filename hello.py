@@ -22,7 +22,7 @@ print("Druck: %s Millibars" % pressure)
 sense.set_imu_config(True, False, False)  # nur Kompass an / nicht Neigungssensor und nicht Beschleunigungsssensor
 for i in range(1,10):  #for i=1 i<10 i++
     sense.show_message ( "%s" % i )    # %s Wert als String ausgeben
-	north = sense.get_compass()
+    north = sense.get_compass()
     print("North: %s" % north)
     time.sleep(1)
 sense.clear()	
