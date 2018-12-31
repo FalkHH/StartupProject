@@ -1,3 +1,4 @@
+import time
 from sense_hat import SenseHat
 sense = SenseHat()
 sense.show_message("Los!")
@@ -18,3 +19,9 @@ print("Temperatur-Druck: %s C" % temp)
 pressure = sense.get_pressure()
 #sense.show_message("Druck: %s Millibars" % pressure)
 print("Druck: %s Millibars" % pressure)
+
+for i in range(1,10):
+    sense.show_message ( i )
+    time.sleep(1)
+sense.clear()	
+print("Temperatur: %s C" % temp)
