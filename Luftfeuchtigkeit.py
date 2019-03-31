@@ -15,7 +15,7 @@ def LuftfeuchtigkeitMessen(Dateiname="Feuchtigkeitsdaten"):    #Funktion nutzt S
 #i = 1
 while True:
 	Datum = time.strftime("%y-%m-%d-%H")                             # Datum mit Stunde feststellen
-	LuftfeuchtigkeitMessen("Feuchtigkeitsdaten_%s.csv" % (Datum))
+	LuftfeuchtigkeitMessen("Feuchtigkeitsdaten_%s" % (Datum))
 	time.sleep(30)				                                  # 30 Sekunden warten
 	#i += 1
 	#if i > 10 :
