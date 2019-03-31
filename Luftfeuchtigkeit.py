@@ -12,7 +12,7 @@ def LuftfeuchtigkeitMessen(Dateiname="Feuchtigkeitsdaten"):    #Funktion nutzt S
 	sense.show_message("Luftfeuchtigkeit: %s %%rH" % Feuchtigkeit)   # %% ermöglicht die Anzeige eines %
 	Zeit = time.time()                                    # 'Zeitstempel als Wert
 	F_out  = open(Dateiname + ".csv", "a")                # Offenen einer Datei zum Datenanhängen
-	F_out.write("%s , %2.2f" % (Zeit,Feuchtigkeit) )      # Datei mit Werten s=Sting f=Floatingpoint beschreiben
+	F_out.write("%s,%2.2f\n" % (Zeit,Feuchtigkeit) )      # Datei mit Werten s=Sting f=Floatingpoint beschreiben  \n = Zeilenumbruch
 	F_out.close()                                         # Datei schließen  
 
 def DateiUmbenennen(Dateiname="Feuchtigkeitsdaten"):
