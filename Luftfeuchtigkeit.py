@@ -9,6 +9,7 @@ def LuftfeuchtigkeitMessen(Dateiname="Feuchtigkeitsdaten"):    #Funktion nutzt S
 	"""Misst die Luftfeuchtigkeit der Umgebung und schreibt den Wert in eine CSV-Datei
 	"""
 	Feuchtigkeit = sensor.get_humidity()                  # misst die Luftfeuchtigkeit
+	sense.show_message("Luftfeuchtigkeit: %s %%rH" % Feuchtigkeit)   # %% ermöglicht die Anzeige eines %
 	Zeit = time.time()                                    # 'Zeitstempel als Wert
 	F_out  = open(Dateiname + ".csv", "a")                # Offenen einer Datei zum Datenanhängen
 	F_out.write("%s , %2.2f" % (Zeit,Feuchtigkeit) )      # Datei mit Werten s=Sting f=Floatingpoint beschreiben
