@@ -12,14 +12,14 @@ def LuftfeuchtigkeitMessen(Dateiname="Feuchtigkeitsdaten"):    #Funktion nutzt S
 	F_out.close()                                         # Datei schließen
 	sensor.show_message("%2.2f %%rH" % Feuchtigkeit)   # %% ermöglicht die Anzeige eines %	
 
-i = 1
+#i = 1
 while True:
-	Datum = time.strftime("%y-%m-%d")                             # Datum feststellen
+	Datum = time.strftime("%y-%m-%d-%H")                             # Datum mit Stunde feststellen
 	LuftfeuchtigkeitMessen("Feuchtigkeitsdaten_%s.csv" % (Datum))
 	time.sleep(30)				                                  # 30 Sekunden warten
-	i += 1
-	if i > 10 :
-		break		                                              # While-Scheife verlassen
+	#i += 1
+	#if i > 10 :
+	#	break		                                              # While-Scheife verlassen
 		
 		
 	
