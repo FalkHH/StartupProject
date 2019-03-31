@@ -29,7 +29,7 @@ while True:
 	if Tag_neu != Tag_alt :
 		DateiUmbenennen()
 		Tag_alt = Tag_neu
-	i++
+	i += 1
 	if i > 10 :
 		break		# While-Scheife verlassen
 		
