@@ -48,8 +48,8 @@ def MesswerteNormieren():
 	matrix = []								# Anlegen eines Arrays
 	for r in range(8):						# r from 0 to 7
 		for c in b:							# alle 8 B-Werte ansehen
-			if c == 7-r:					# b-Wert auf Zeilenwert überprüfen
-				matrix.append(X)			# alle 64 Farb-Werte nacheinander anhängen
+			if c == 7-r:					# b-Wert auf Zeilenwert ueberpruefen
+				matrix.append(X)			# alle 64 Farb-Werte nacheinander anhaengen
 			else:
 				matrix.append(O)
 	return matrix
