@@ -59,7 +59,7 @@ def MesswerteNormieren():
 	return matrix
 
 def FarbwertErmitteln(Feuchtigkeit):
-	colA = [0,255,255]
+	colA = [0,0,255]
 	colB = [255,0,0]
 	minF = 30
 	maxF = 70
