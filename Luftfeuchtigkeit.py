@@ -15,6 +15,7 @@ def LuftfeuchtigkeitMessen(Dateiname="Feuchtigkeitsdaten"):    #Funktion nutzt S
 	F_out.close()                                         # Datei schliessen
 	sensor.show_message("%2.2f %%rH * %2.2f" % (Feuchtigkeit,Feuchtigkeit) )      # %% ermoeglicht die Anzeige eines  %
 	MesswertSpeichern(Feuchtigkeit)	
+	
 
 def MesswertSpeichern(Messwert):		# schiebt die bislang gespeicherten Werte im Array nach vorne und speichert den neuen Wert ans Ende
 	i = 0
@@ -28,9 +29,11 @@ j = 1
 while True:
 	Datum = time.strftime("%y-%m-%d-%H")                             # Datum mit Stunde feststellen
 	LuftfeuchtigkeitMessen("Feuchtigkeitsdaten_%s" % (Datum))
+	for x in a:
+		print(x) 
 	time.sleep(30)				                                  # 30 Sekunden warten
 	j += 1
-	if j > 10 :
+	if j > 5 :
 		break		                                              # While-Scheife unbedingt verlassen
 		
 		
