@@ -61,7 +61,7 @@ while True:
 	for x in a:
 		print(x) 
 	AnzeigeMatrix = MesswerteNormieren()
-	sense.set_pixels(AnzeigeMatrix)	
+	sensor.set_pixels(AnzeigeMatrix)	
 	time.sleep(30)				                                  # 30 Sekunden warten
 	j += 1
 	if j > 5 :
