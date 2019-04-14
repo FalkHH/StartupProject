@@ -21,7 +21,7 @@ def MesswertSpeichern(Messwert):		# schiebt die bislang gespeicherten Werte im A
 	while i < 7:
 		a[i] = a[i+1]
 		i += 1
-		if i = 7:
+		if i == 7:
 			a[7] = Messwert
 
 j = 1
