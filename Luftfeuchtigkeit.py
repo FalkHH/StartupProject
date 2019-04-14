@@ -65,7 +65,7 @@ def FarbwertErmitteln(Feuchtigkeit):
 	maxF = 70
 	if Feuchtigkeit <= minF:						# 30 und kleiner blau anzeigen
 		X = colA
-	elif Feuchtigkeit >= maxF:					# 70 und höher als rot anzeigen
+	elif Feuchtigkeit >= maxF:					# 70 und hoeher als rot anzeigen
 		X = colB
 	else:										# dazwischen die Rot- und Blauanteile berechnen
 		R = int(0.5+(Feuchtigkeit-minF)*(colB[0]-colA[0])/(maxF-minF))
