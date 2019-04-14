@@ -13,7 +13,7 @@ def LuftfeuchtigkeitMessen(Dateiname="Feuchtigkeitsdaten"):    #Funktion nutzt S
 	F_out  = open(Dateiname + "%s.csv", "a")              # Oeffenen einer Datei zum Datenanhaengen
 	F_out.write("%s,%2.2f\n" % (Zeit,Feuchtigkeit) )      # Datei mit Werten s=Sting f=Floatingpoint beschreiben  \n = Zeilenumbruch
 	F_out.close()                                         # Datei schliessen
-	sensor.show_message("%2.2f %%rH * %2.2f" % (Feuchtigkeit,Feuchtigkeit) )      # %% ermoeglicht die Anzeige eines %
+	sensor.show_message("%2.2f %%rH * %2.2f" % (Feuchtigkeit,Feuchtigkeit) )      # %% ermoeglicht die Anzeige eines  %
 	MesswertSpeichern(Feuchtigkeit)	
 
 del MesswertSpeichern(m)		# schiebt die bislang gespeicherten Werte im Array nach vorne und speichert den neuen Wert ans Ende
