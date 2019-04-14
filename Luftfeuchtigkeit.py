@@ -31,7 +31,7 @@ while True:
 	time.sleep(30)				                                  # 30 Sekunden warten
 	j += 1
 	if j > 10 :
-		break		                                              # While-Scheife verlassen
+		break		                                              # While-Scheife unbedingt verlassen
 		
 		
 	
