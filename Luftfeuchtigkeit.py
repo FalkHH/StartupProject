@@ -5,8 +5,10 @@ sensor = SenseHat()              # Instanz vom Objektklasse erstellt
 
 m = sensor.get_humidity()        # misst ersten Feuchtigkeitswert
 a = [m,m,m,m,m,m,m,m]            # initial ist das Array mit dem Iitialwert belegt
-X = [255, 0, 0]  # Red
-O = [0, 0, 0]  # Black
+#X = [255, 0, 0]      # Red
+#W = [255, 255, 255]  # White
+#B = [0, 0, 255]		 # Blau
+O = [0, 0, 0]        # Black
 
 def LuftfeuchtigkeitMessen(Dateiname="Feuchtigkeitsdaten"):    #Funktion nutzt Standard-Datei, falls sie ohne speziellem Parameter aufgerufen wird
 	"""Misst die Luftfeuchtigkeit der Umgebung und schreibt den Wert in eine CSV-Datei
@@ -33,6 +35,7 @@ def MesswerteNormieren():
 	amin = min(a)
 	d = amax - amin
 	if d == 0:							# alle Werte sind gleich (am Anfang)
+		X = FarbwertErmitteln(amin)
 		default = [
 		O, O, O, O, O, O, O, O,
 		O, O, O, O, O, O, O, O,
@@ -44,16 +47,30 @@ def MesswerteNormieren():
 		O, O, O, O, O, O, O, O
 		]
 		return default						# lineare Darstellung
-	b = [int(0.5+(m-amin)*7/d) for m in a]	# Normierung auf Matrixzeilen;  mit 0.5 ind INT gerundet auf Integerwert
+	#b = [int(0.5+(m-amin)*7/d) for m in a]	# Normierung auf Matrixzeilen;  mit 0.5 ind INT gerundet auf Integerwert
 	matrix = []								# Anlegen eines Arrays
 	for r in range(8):						# r from 0 to 7
-		for c in b:							# alle 8 B-Werte ansehen
-			if c == 7-r:					# b-Wert auf Zeilenwert ueberpruefen
-				matrix.append(X)			# alle 64 Farb-Werte nacheinander anhaengen
+		for m in a:							# alle 8 B-Werte ansehen
+			b = int(0.5+(m-amin)*7/d)
+			if b == 7-r:					# b-Wert auf Zeilenwert ueberpruefen
+				matrix.append(FarbwertErmitteln(m))			# alle 64 Farb-Werte nacheinander anhaengen
 			else:
 				matrix.append(O)
 	return matrix
-	
+
+def FarbwertErmitteln(Feuchtigkeit):
+	colR = [255,0,0]
+	colB = [0,0,255]
+	if Feuchtigkeit <= 30:
+		X = colB
+	elif Feuchtigkeit >= 70:
+		X = colR
+	else:
+		R = int(0.5+(Feuchtigkeit-30)*255/40)
+		G = 0
+		B = int(0.5+(70-Feuchtigkeit)*255/40)
+		X = [R,G,B]
+	return X
 j = 1
 while True:
 	Datum = time.strftime("%y-%m-%d-%H")                             # Datum mit Stunde feststellen
@@ -65,6 +82,7 @@ while True:
 	time.sleep(30)				                                  # 30 Sekunden warten
 	j += 1
 	if j > 5 :
+		sensor.clear()
 		break		                                              # While-Scheife unbedingt verlassen
 		
 		
