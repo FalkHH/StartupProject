@@ -16,7 +16,7 @@ def LuftfeuchtigkeitMessen(Dateiname="Feuchtigkeitsdaten"):    #Funktion nutzt S
 	sensor.show_message("%2.2f %%rH * %2.2f" % (Feuchtigkeit,Feuchtigkeit) )      # %% ermoeglicht die Anzeige eines  %
 	MesswertSpeichern(Feuchtigkeit)	
 
-def MesswertSpeichern(Messwert)		# schiebt die bislang gespeicherten Werte im Array nach vorne und speichert den neuen Wert ans Ende
+def MesswertSpeichern(Messwert):		# schiebt die bislang gespeicherten Werte im Array nach vorne und speichert den neuen Wert ans Ende
 	for( i = 1; i < 7; i++):
 		a[i] = a[i+1]
 		i += 1
