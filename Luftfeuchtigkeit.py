@@ -5,10 +5,10 @@ sensor = SenseHat()              # Instanz vom Objektklasse erstellt
 
 m = sensor.get_humidity()        # misst ersten Feuchtigkeitswert
 a = [m,m,m,m,m,m,m,m]            # initial ist das Array mit dem Iitialwert belegt
-#X = [255, 0, 0]      # Red
-#W = [255, 255, 255]  # White
-#B = [0, 0, 255]		 # Blau
-O = [0, 0, 0]        # Black
+# X = [255, 0, 0]      # Red
+# W = [255, 255, 255]  # White
+# B = [0, 0, 255]	   # Blau
+O = [0, 0, 0]          # Black
 
 def LuftfeuchtigkeitMessen(Dateiname="Feuchtigkeitsdaten"):    #Funktion nutzt Standard-Datei, falls sie ohne speziellem Parameter aufgerufen wird
 	"""Misst die Luftfeuchtigkeit der Umgebung und schreibt den Wert in eine CSV-Datei
@@ -18,7 +18,7 @@ def LuftfeuchtigkeitMessen(Dateiname="Feuchtigkeitsdaten"):    #Funktion nutzt S
 	F_out  = open(Dateiname + ".csv", "a")                # Oeffenen einer Datei zum Datenanhaengen
 	F_out.write("%s,%2.2f\n" % (Zeit,Feuchtigkeit) )      # Datei mit Werten s=Sting f=Floatingpoint beschreiben  \n = Zeilenumbruch
 	F_out.close()                                         # Datei schliessen
-	sensor.show_message("%2.2f %%rH * %2.2f" % (Feuchtigkeit,Feuchtigkeit) )      # %% ermoeglicht die Anzeige eines  %
+	# sensor.show_message("%2.2f %%rH * %2.2f" % (Feuchtigkeit,Feuchtigkeit) )      # %% ermoeglicht die Anzeige eines  %
 	MesswertSpeichern(Feuchtigkeit)	
 	
 
@@ -59,24 +59,24 @@ def MesswerteNormieren():
 	return matrix
 
 def FarbwertErmitteln(Feuchtigkeit):
-	colR = [255,0,0]
-	colB = [0,0,255]
-	if Feuchtigkeit <= 30:
+	colA = [0,255,255]
+	colB = [255,0,0]
+	minF = 30
+	maxF = 70
+	if Feuchtigkeit <= minF:						# 30 und kleiner blau anzeigen
+		X = colA
+	elif Feuchtigkeit >= maxF:					# 70 und höher als rot anzeigen
 		X = colB
-	elif Feuchtigkeit >= 70:
-		X = colR
-	else:
-		R = int(0.5+(Feuchtigkeit-30)*255/40)
-		G = 0
-		B = int(0.5+(70-Feuchtigkeit)*255/40)
+	else:										# dazwischen die Rot- und Blauanteile berechnen
+		R = int(0.5+(Feuchtigkeit-minF)*(colB[0]-colA[0])/(maxF-minF))
+		G = int(0.5+(Feuchtigkeit-minF)*(colB[1]-colA[1])/(maxF-minF))
+		B = int(0.5+(Feuchtigkeit-minF)*(colB[2]-colA[2])/(maxF-minF))
 		X = [R,G,B]
 	return X
 j = 1
 while True:
 	Datum = time.strftime("%y-%m-%d-%H")                             # Datum mit Stunde feststellen
 	LuftfeuchtigkeitMessen("Feuchtigkeitsdaten_%s" % (Datum))
-	for x in a:
-		print(x) 
 	AnzeigeMatrix = MesswerteNormieren()
 	sensor.set_pixels(AnzeigeMatrix)	
 	time.sleep(30)				                                  # 30 Sekunden warten
