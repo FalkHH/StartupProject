@@ -1,11 +1,8 @@
 import time                      # importieren einer gesamten Standard-Bilbliothek 
 from sense_hat import SenseHat   # importieren einer Klasse aus spezieller Bilbliothek
 sensor = SenseHat()              # Instanz vom Objektklasse erstellt
-i=0
-j=0
 
 m = sensor.get_humidity()        # misst ersten Feuchtigkeitswert
-
 a = [m,m,m,m,m,m,m,m]            # initial ist das Array mit dem Iitialwert belegt
 
 def LuftfeuchtigkeitMessen(Dateiname="Feuchtigkeitsdaten"):    #Funktion nutzt Standard-Datei, falls sie ohne speziellem Parameter aufgerufen wird
@@ -19,15 +16,14 @@ def LuftfeuchtigkeitMessen(Dateiname="Feuchtigkeitsdaten"):    #Funktion nutzt S
 	sensor.show_message("%2.2f %%rH * %2.2f" % (Feuchtigkeit,Feuchtigkeit) )      # %% ermoeglicht die Anzeige eines  %
 	MesswertSpeichern(Feuchtigkeit)	
 
-del MesswertSpeichern(m)		# schiebt die bislang gespeicherten Werte im Array nach vorne und speichert den neuen Wert ans Ende
-	i=0
-	while i < 7:
+def MesswertSpeichern(m)		# schiebt die bislang gespeicherten Werte im Array nach vorne und speichert den neuen Wert ans Ende
+	for( i = 1; i < 7; i++):
 		a[i] = a[i+1]
 		i += 1
 		if i = 7:
 			a[7] = m
 
-j=1
+j = 1
 while True:
 	Datum = time.strftime("%y-%m-%d-%H")                             # Datum mit Stunde feststellen
 	LuftfeuchtigkeitMessen("Feuchtigkeitsdaten_%s" % (Datum))
