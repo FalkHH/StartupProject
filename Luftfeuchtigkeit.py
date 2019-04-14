@@ -73,17 +73,19 @@ def FarbwertErmitteln(Feuchtigkeit):
 		B = int(0.5+(Feuchtigkeit-minF)*(colB[2]-colA[2])/(maxF-minF)+colA[2])
 		X = [R,G,B]
 	return X
-j = 1
-while True:
-	Datum = time.strftime("%y-%m-%d-%H")                             # Datum mit Stunde feststellen
-	LuftfeuchtigkeitMessen("Feuchtigkeitsdaten_%s" % (Datum))
-	AnzeigeMatrix = MesswerteNormieren()
-	sensor.set_pixels(AnzeigeMatrix)	
-	time.sleep(30)				                                  # 30 Sekunden warten
-	j += 1
-	if j > 5 :
-		sensor.clear()
-		break		                                              # While-Scheife unbedingt verlassen
+
+if __name__ = "__main__":
+	#j = 1
+	while True:
+		Datum = time.strftime("%y-%m-%d-%H")                             # Datum mit Stunde feststellen
+		LuftfeuchtigkeitMessen("/home/pi/StartupProject/Feuchtigkeitsdaten_%s" % (Datum))
+		AnzeigeMatrix = MesswerteNormieren()
+		sensor.set_pixels(AnzeigeMatrix)	
+		time.sleep(30)				                                  # 30 Sekunden warten
+		#j += 1
+		#if j > 5 :
+		#	sensor.clear()
+		#	break		                                              # While-Scheife unbedingt verlassen
 		
 		
 	
