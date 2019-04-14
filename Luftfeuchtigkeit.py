@@ -74,7 +74,7 @@ def FarbwertErmitteln(Feuchtigkeit):
 		X = [R,G,B]
 	return X
 
-if __name__ = "__main__":
+if __name__ == "__main__":		# Deklaration als Hauptprogramm-Anfang
 	#j = 1
 	while True:
 		Datum = time.strftime("%y-%m-%d-%H")                             # Datum mit Stunde feststellen
