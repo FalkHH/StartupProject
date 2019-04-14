@@ -17,7 +17,8 @@ def LuftfeuchtigkeitMessen(Dateiname="Feuchtigkeitsdaten"):    #Funktion nutzt S
 	MesswertSpeichern(Feuchtigkeit)	
 
 def MesswertSpeichern(Messwert):		# schiebt die bislang gespeicherten Werte im Array nach vorne und speichert den neuen Wert ans Ende
-	for( i = 1; i < 7; i++):
+	i = 0
+	while i < 7:
 		a[i] = a[i+1]
 		i += 1
 		if i = 7:
