@@ -1,6 +1,9 @@
 import time                      # importieren einer gesamten Standard-Bilbliothek 
 from sense_hat import SenseHat   # importieren einer Klasse aus spezieller Bilbliothek
 sensor = SenseHat()              # Instanz vom Objektklasse erstellt
+i=0
+j=0
+
 m = sensor.get_humidity()        # misst ersten Feuchtigkeitswert
 
 a = [m,m,m,m,m,m,m,m]            # initial ist das Array mit dem Iitialwert belegt
