@@ -20,14 +20,14 @@ def LuftfeuchtigkeitMessen(Dateiname="Feuchtigkeitsdaten"):    #Funktion nutzt S
 	MesswertSpeichern(Feuchtigkeit)	
 
 del MesswertSpeichern(m)		# schiebt die bislang gespeicherten Werte im Array nach vorne und speichert den neuen Wert ans Ende
-	i = 0
+	i=0
 	while i < 7:
 		a[i] = a[i+1]
 		i += 1
 		if i = 7:
 			a[7] = m
 
-j = 1
+j=1
 while True:
 	Datum = time.strftime("%y-%m-%d-%H")                             # Datum mit Stunde feststellen
 	LuftfeuchtigkeitMessen("Feuchtigkeitsdaten_%s" % (Datum))
